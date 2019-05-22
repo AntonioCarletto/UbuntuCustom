@@ -54,10 +54,10 @@ then
 	sudo chmod -R 700 ~/.config/autostart
 	sudo touch ~/.config/autostart/plank.desktop
 	sudo chmod 664 ~/.config/autostart/plank.desktop
-	echo "[Desktop Entry]" >> ~/.config/autostart/plank.desktop
-	echo "Name=plank" >> ~/.config/autostart/plank.desktop
-	echo "Exec=/usr/bin/plank" >> ~/.config/autostart/plank.desktop
-	echo "Type=Application" >> ~/.config/autostart/plank.desktop
+	sudo echo "[Desktop Entry]" >> ~/.config/autostart/plank.desktop
+	sudo echo "Name=plank" >> ~/.config/autostart/plank.desktop
+	sudo echo "Exec=/usr/bin/plank" >> ~/.config/autostart/plank.desktop
+	sudo echo "Type=Application" >> ~/.config/autostart/plank.desktop
 
 
 	#AGGIUNGI REPOSITORY
