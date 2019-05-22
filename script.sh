@@ -13,6 +13,7 @@ echo -e "\e[1m\e[33m
 #Colori e caratteri
 verde="\e[92m"
 fine="\e[0m"
+gras="\e[1m"
 #problemi con endeler colore
 
 
@@ -361,7 +362,8 @@ then
 else
 	echo " "
 	echo " "
-	echo -e "\e[31mConfigurazione non effettuata!\e[0m"
+	echo -e $verde$gras"Configurazione non effettuata!"$fine
+	echo " "
 	echo " "
 
 fi
