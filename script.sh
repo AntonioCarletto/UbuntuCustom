@@ -237,14 +237,7 @@ then
 
 
 	#AIRCRACK-NG(Attacchi wireless)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE AIRCRACK-NG(Attacchi wireless)]"$fine
-	sudo apt-get install libtool
-	sudo tar -zxvf ~/Scaricati/aircrack-ng-1.5.2.tar.gz -C /opt/
-	cd /opt/aircrack-ng-1.5.2
-	sudo ./autogen.sh
-	sudo make
-	sudo make install
+	sudo apt-get install aircrack-ng
 
 	#WIFITE(Attacchi wireless)
 	echo " "
