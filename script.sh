@@ -150,8 +150,8 @@ then
 		sudo sh -c "echo export MSF_DATABASE_CONFIG=/opt/metasploit-framework/database.yml >> ~/.bashrc"
 	#Aviare postgres e msfconsole:
 		sudo service postgresql start
-	
-
+	#Connettere al database Metasploit:
+		msfconsole < ~/Scaricati/input.txt
 	
 	#DMITRY(Recupero Informazioni)
 	echo " "
@@ -215,11 +215,6 @@ then
 	sudo make
 	sudo make install	
 
-	#ARMITAGE(Exploitation)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE ARMITAGE(Exploitation)]"$fine
-	sudo tar -zxvf ~/Scaricati/armitage150813.tgz -C /opt/metasploit-framework
-
 	#BEEF-XXS(Exploitation)
 	echo " "
 	echo -e $verde"[INSTALLAZIONE BEEF-XXS(Exploitation)]"$fine
@@ -234,7 +229,6 @@ then
 	sudo ./update-beef
 	sudo rm /opt/beef/config.yaml
 	sudo mv ~/Scaricati/config.yaml /opt/beef/
-
 
 	#AIRCRACK-NG(Attacchi wireless)
 	sudo apt-get install aircrack-ng
@@ -275,12 +269,10 @@ then
 	echo -e $verde"[INSTALLAZIONE MAT(exif data)]"$fine
 	sudo apt-get install mat -y
 
-
 	#BLEACHBIT(Come CCleaner)
 	echo " "
 	echo -e $verde"[INSTALLAZIONE BLEACHBIT(Come CCleaner)]"$fine
 	sudo apt install bleachbit -y
-
 
 	#SECURE DELETED (SHRED)
 	echo " "
@@ -331,7 +323,7 @@ then
 	echo "3. Per lo sfondo selezionare una delle immagini contenute nella cartella Immagini facendo click con tasto destro sul Desktop e selezionando \"Cambia Sfondo\""
 	echo " "
 	echo -e "\e[5m\e[31m[ATTENZIONE!!!]\e[0m"
-	echo "Per Metasploit (che finirà di configurarsi dopo la chiusura di Unity per il tema) neL caso durante la ricerca di un modulo si presentasse il messaggio [!] Module database cache not built yet, using slow search, possiamo correggere l’errore e beneficiare della ricerca veloce eseguendo i seguenti passaggi:"
+	echo "Per Metasploit nel caso durante la ricerca di un modulo si presentasse il messaggio [!] Module database cache not built yet, using slow search, possiamo correggere l’errore e beneficiare della ricerca veloce eseguendo i seguenti passaggi:"
 	echo "msfconsole
 	#	db_rebuild_cache
 	#	quit
@@ -346,9 +338,6 @@ then
 	#Apre il tool per modificare il tema
 	unity-tweak-tool
 
-	#Connettere al database Metasploit:
-	#db_connect -y /opt/metasploit-framework/database.yml
-	msfconsole < ~/Scaricati/input.txt
 	echo " "
 	echo -e "\e[31mConfigurazione effettuata con Successo!\e[0m"
 
