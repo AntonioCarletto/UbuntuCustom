@@ -14,6 +14,7 @@ echo -e "\e[1m\e[33m
 verde="\e[92m"
 fine="\e[0m"
 gras="\e[1m"
+rosso="\e[31m"
 #problemi con endeler colore
 
 
@@ -101,12 +102,12 @@ then
 
 	#Sfondo Login
 	echo " "
-	echo -e $verde"[CONFIGURAZIONE SFONDO LOGIN PAGE]"$fine
-	sudo rm /etc/alternatives/gdm3.css
-	sudo chmod 664 ~/Scaricati/gdm3.css
-	sudo mv  ~/Scaricati/gdm3.css /etc/alternatives/
+	echo -e $verde"[CONFIGURAZIONE SFONDO LOGIN PAGE]"$fine		
+	sudo rm /usr/share/gnome-shell/theme/ubuntu.css
+	sudo chmod 664 ~/Scaricati/ubuntu.css
+	sudo mv  ~/Scaricati/ubuntu.css /usr/share/gnome-shell/theme/
 	
-
+	
 	#JAVA(IMPORTANTE PER INSTALLAZIONI SUCCESSIVE):
 	echo " "
 	echo -e $verde"[INSTALLAZIONE JAVA]"$fine
@@ -339,12 +340,12 @@ then
 	unity-tweak-tool
 
 	echo " "
-	echo -e "\e[31mConfigurazione effettuata con Successo!\e[0m"
+	echo -e $verde$gras"Configurazione effettuata con Successo!"$fine
 
 else
 	echo " "
 	echo " "
-	echo -e $verde$gras"Configurazione non effettuata!"$fine
+	echo -e $rosso$gras"Configurazione non effettuata!"$fine
 	echo " "
 	echo " "
 
