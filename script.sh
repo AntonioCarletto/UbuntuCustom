@@ -166,38 +166,21 @@ then
 	echo -e $verde"[INSTALLAZIONE NETDISCOVER(Recupero Informazioni)]"$fine
 	sudo apt-get install netdiscover -y
 
-	#NMAP(Recupero Informazioni)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE NMAP(Recupero Informazioni)]"$fine
-	sudo apt-get install nmap -y
-
 	#P0F(Recupero Informazioni)
 	echo " "
 	echo -e $verde"[INSTALLAZIONE P0F(Recupero Informazioni)]"$fine
 	sudo apt-get install p0f -y
-
-	#MALTEGO(Recupero Informazioni)
+	
+	#GOOGLE CHROME BROWSER
 	echo " "
-	echo -e $verde"[INSTALLAZIONE MALTEGO(Recupero Informazioni)]"$fine
-	sudo apt-get install openjdk-8-jdk -y
-	sudo dpkg -i ~/Scaricati/Maltego.v4.2.3.12223.deb
+	echo -e $verde"[INSTALLAZIONE GOOGLE CHROME BROWSER]"$fine
+	sudo dpkg -i ~/Scaricati/google-chrome-stable_current_amd64.deb
 
 	#LEAFPAD(Editor)
 	echo " "
 	echo -e $verde"[INSTALLAZIONE LEAFPAD(Editor)]"$fine
 	sudo apt-get install leafpad
-
-	#NIKTO(Analisi Vulnerabilita')
-	echo " "
-	echo -e $verde"[INSTALLAZIONE NIKTO(Analisi Vulnerabilita')]"$fine
-	sudo apt-get install nikto -y
-	sudo nikto -update
-
-	#BURPSUITE(Applicazioni web)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE BURPSUITE(Applicazioni web)]"$fine
-	sudo bash ~/Scaricati/burpsuite_community_linux_v1_7_36.sh
-
+	
 	#JOHN THE RIPPER(Attacchi alle password)
 	echo " "
 	echo -e $verde"[INSTALLAZIONE JOHN THE RIPPER(Attacchi alle password)]"$fine
@@ -207,30 +190,13 @@ then
 	echo " "
 	echo -e $verde"[INSTALLAZIONE CEWL(Attacchi alle password)]"$fine
 	sudo apt-get install cewl -y
-
-	#CRUNCH(Attacchi alle password)
+	
+	#NIKTO(Analisi Vulnerabilita')
 	echo " "
-	echo -e $verde"[INSTALLAZIONE CRUNCH(Attacchi alle password)]"$fine
-	sudo tar -zxvf ~/Scaricati/crunch-3.6.tgz -C /opt/
-	cd /opt/crunch-3.6
-	sudo make
-	sudo make install	
-
-	#BEEF-XXS(Exploitation)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE BEEF-XXS(Exploitation)]"$fine
-	sudo apt install ruby ruby-dev
-	sudo apt install git
-	cd /opt/
-	sudo git clone https://github.com/beefproject/beef
-	cd /opt/beef
-	sudo bundle install
-	sudo ./install
-	sudo ./update-geoipdb
-	sudo ./update-beef
-	sudo rm /opt/beef/config.yaml
-	sudo mv ~/Scaricati/config.yaml /opt/beef/
-
+	echo -e $verde"[INSTALLAZIONE NIKTO(Analisi Vulnerabilita')]"$fine
+	sudo apt-get install nikto -y
+	sudo nikto -update
+	
 	#AIRCRACK-NG(Attacchi wireless)
 	sudo apt-get install aircrack-ng
 
@@ -241,7 +207,7 @@ then
 	sudo apt-get update  > /dev/null 
 	sudo apt-get upgrade -y  > /dev/null
 	sudo apt-get install wifite -y
-
+	
 	#MACCHANGER(sniffing)
 	echo " "
 	echo -e $verde"[INSTALLAZIONE MACCHANGER(sniffing)]"$fine
@@ -279,6 +245,54 @@ then
 	echo " "
 	echo -e $verde"[INSTALLAZIONE SECURE DELETED (SHRED)]"$fine
 	sudo apt-get install secure-delete -y
+	
+	#MALTEGO(Recupero Informazioni)
+	echo " "
+	echo -e $verde"[INSTALLAZIONE MALTEGO(Recupero Informazioni)]"$fine
+	sudo apt-get install openjdk-8-jdk -y
+	sudo dpkg -i ~/Scaricati/Maltego.v4.2.3.12223.deb
+
+	#BURPSUITE(Applicazioni web)
+	echo " "
+	echo -e $verde"[INSTALLAZIONE BURPSUITE(Applicazioni web)]"$fine
+	sudo bash ~/Scaricati/burpsuite_community_linux_v1_7_36.sh	
+
+	#CRUNCH(Attacchi alle password)
+	echo " "
+	echo -e $verde"[INSTALLAZIONE CRUNCH(Attacchi alle password)]"$fine
+	sudo tar -zxvf ~/Scaricati/crunch-3.6.tgz -C /opt/
+	cd /opt/crunch-3.6
+	sudo make
+	sudo make install	
+
+	#BEEF-XXS(Exploitation)
+	echo " "
+	echo -e $verde"[INSTALLAZIONE BEEF-XXS(Exploitation)]"$fine
+	sudo apt install ruby ruby-dev
+	sudo apt install git
+	cd /opt/
+	sudo git clone https://github.com/beefproject/beef
+	cd /opt/beef
+	sudo bundle install
+	sudo ./install
+	sudo ./update-geoipdb
+	sudo ./update-beef
+	sudo rm /opt/beef/config.yaml
+	sudo mv ~/Scaricati/config.yaml /opt/beef/
+	
+	#VEIL
+	echo " "
+	echo -e $verde"[INSTALLAZIONE VEIL]"$fine
+	cd /opt/
+	sudo git clone https://github.com/Veil-Framework/Veil.git
+	cd /opt/Veil
+	sudo ./config/setup.sh --force --silent
+
+
+	#SHELTER
+	echo " "
+	echo -e $verde"[INSTALLAZIONE SHELTER]"$fine
+	sudo unzip ~/Scaricati/shellter.zip -d /opt/
 
 	#TOR BROWSER
 	echo " "
@@ -294,24 +308,7 @@ then
 	sudo apt install tor deb.torproject.org-keyring -y
 	#non installato
 
-	#GOOGLE CHROME BROWSER
-	echo " "
-	echo -e $verde"[INSTALLAZIONE GOOGLE CHROME BROWSER]"$fine
-	sudo dpkg -i ~/Scaricati/google-chrome-stable_current_amd64.deb
-
-	#VEIL
-	echo " "
-	echo -e $verde"[INSTALLAZIONE VEIL]"$fine
-	cd /opt/
-	sudo git clone https://github.com/Veil-Framework/Veil.git
-	cd /opt/Veil
-	sudo ./config/setup.sh --force --silent
-
-
-	#SHELTER
-	echo " "
-	echo -e $verde"[INSTALLAZIONE SHELTER]"$fine
-	sudo unzip ~/Scaricati/shellter.zip -d /opt/	
+		
 
 
 	echo " "
