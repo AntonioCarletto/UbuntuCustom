@@ -53,13 +53,17 @@ then
 	sudo apt-get install plank -y
 	echo -e $verde"[CONFIGURAZIONE AUTORUN PLANK]"$fine
 	sudo mkdir ~/.config/autostart
-	sudo chmod -R 700 ~/.config/autostart
+	sudo chmod -R 777 ~/.config/autostart
 	sudo touch ~/.config/autostart/plank.desktop
-	sudo chmod 664 ~/.config/autostart/plank.desktop
+	sudo chmod 777 ~/.config/autostart/plank.desktop
 	sudo echo "[Desktop Entry]" >> ~/.config/autostart/plank.desktop
 	sudo echo "Name=plank" >> ~/.config/autostart/plank.desktop
 	sudo echo "Exec=/usr/bin/plank" >> ~/.config/autostart/plank.desktop
 	sudo echo "Type=Application" >> ~/.config/autostart/plank.desktop
+	sudo chmod -R 700 ~/.config/autostart
+	sudo chmod 664 ~/.config/autostart/plank.desktop
+
+
 
 
 	#AGGIUNGI REPOSITORY
