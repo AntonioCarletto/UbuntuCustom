@@ -336,9 +336,13 @@ then
 	echo "Per applicare il tema alla Dock di Plank (Il menù in stile MacOS che esce sul fondo del Desktop), fare click sul menù con 'CTRL + tasto destro del mouse' e selezionare Preferenze -> Aspetto -> 'Tema' e selezionare MB-X-Dark; dopodichè sempre in Aspetto andare su 'Dimensioni icone' e settare a 55 il valore; in fine, attivare l''Ingrandimento icone' e settarlo a 170."
 	echo "Per aggiungere i programmi alla Dock Plank, aprire il programma interessato e cliccare con il tasto destro sull'icona del programma nel Menù Plank; spuntare 'Mantieni sulla Dock'"
 	
-
 	#Apre il tool per modificare il tema
 	unity-tweak-tool
+
+	#Cambio MAC address
+	#sudo macchanger -r interface
+	
+	
 
 	echo " "
 	echo -e $verde$gras"Configurazione effettuata con Successo!"$fine
