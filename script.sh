@@ -339,8 +339,19 @@ then
 	#Apre il tool per modificare il tema
 	unity-tweak-tool
 
+	#ALTRO:
 	#Cambio MAC address
 	#sudo macchanger -r interface
+	#service network-manager restart
+	
+	#Cambio DNS (OpenDNS)
+	#sudo nano /etc/resolv.conf
+	#aggiungere gli ip di openDNS: 208.67.222.222, 208.67.220.220
+	#service network-manager restart
+	
+	#Pulire cache DNS
+	sudo apt-get install nscd -y
+	#/etc/init.d/nscd restart
 	
 	
 
