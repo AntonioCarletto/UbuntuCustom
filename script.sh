@@ -353,7 +353,15 @@ then
 	sudo apt-get install nscd -y
 	#/etc/init.d/nscd restart
 	
-	
+	#VPN
+	#sito dove consultare tutte le vpn non gratuite con possibilità di pagamento in bitcoin e con politica NO LOG:www.vpndienste.net
+	#Consigliate: NordVpn, BTGuard, Mullvad, PRQ, Private Internet Access, ShadeYou, OctaneVpn, SlickVPN, Securevpn.to
+	sudo apt-get install openvpn
+	cd /etc/openvpn
+	sudo wget https://nordvpn.com/api/files/zip
+	sudo unzip zip
+	#Per collegarsi ad una Vpn eseguire il comando: openvpn uno_dei_server e inserire nome utente e password
+	#Per testare eseguire il comando: wget http://ipinfo.io/ip -qO -
 
 	echo " "
 	echo -e $verde$gras"Configurazione effettuata con Successo!"$fine
