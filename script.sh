@@ -309,8 +309,7 @@ then
 	sudo gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
 	sudo apt-get update
 	sudo apt-get upgrade -y
-	sudo apt install tor deb.torproject.org-keyring -y
-	#non installato
+	sudo apt install tor -y
 
 		
 
@@ -358,6 +357,7 @@ then
 	#Consigliate: NordVpn, BTGuard, Mullvad, PRQ, Private Internet Access, ShadeYou, OctaneVpn, SlickVPN, Securevpn.to
 	sudo apt-get install openvpn
 	cd /etc/openvpn
+	#In questo caso si è effettuato un abbonamento a NordVpn e quindi si farà:
 	sudo wget https://nordvpn.com/api/files/zip
 	sudo unzip zip
 	#Per collegarsi ad una Vpn eseguire il comando: openvpn uno_dei_server e inserire nome utente e password
