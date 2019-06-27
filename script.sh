@@ -78,6 +78,8 @@ then
 	sudo add-apt-repository ppa:openjdk-r/ppa -y #JAVA7
 	echo -e $verde"[Repository Java11:]"$fine
 	sudo add-apt-repository ppa:linuxuprising/java -y #JAVA11
+	echo -e $verde"[Repository OpenVas:]"$fine
+	sudo add-apt-repository ppa:mrazavi/openvas
 	echo -e $verde"[Update:]"$fine
 	sudo apt-get update > /dev/null
 	sudo apt-get upgrade -y > /dev/null
@@ -200,6 +202,26 @@ then
 	echo -e $verde"[INSTALLAZIONE NIKTO(Analisi Vulnerabilita')]"$fine
 	sudo apt-get install nikto -y
 	sudo nikto -update
+	
+	#OPENVAS(Analisi Vulnerabilita')
+	echo " "
+	echo -e $verde"[INSTALLAZIONE OPENVAS(Analisi Vulnerabilita')]"$fine
+	sudo apt install sqlite3
+	sudo apt install openvas9 -y
+	sudo apt install texlive-latex-extra --no-install-recommends -y
+	sudo apt install texlive-fonts-recommended -y
+	sudo apt install libopenvas9-dev -y
+	sudo greenbone-nvt-sync
+	sudo greenbone-scapdata-sync
+	sudo greenbone-certdata-sync
+	sudo systemctl restart openvas-scanner
+	sudo systemctl restart openvas-manager
+	sudo systemctl restart openvas-gsa
+	sudo systemctl enable openvas-scanner
+	sudo systemctl enable openvas-manager
+	sudo systemctl enable openvas-gsa
+	sudo openvasmd --rebuild --progress
+	echo -e $verde"Per accedere https://127.0.0.1:4000, con admin - admin"$fine
 	
 	#AIRCRACK-NG(Attacchi wireless)
 	sudo apt-get install aircrack-ng
