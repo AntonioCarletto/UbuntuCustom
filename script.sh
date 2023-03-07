@@ -28,12 +28,13 @@ read RISP
 
 if [ $RISP == "y" ]
 then
-
-	#Sposta tutti i file Scaricati nelle cartelle interessate
+	
+	#Unzip e Sposta tutti i file di container.zip nelle apposite cartelle
 	echo " "
+	echo -e $verde"[Unzip conteiner.zip]"$fine
+	sudo unzip $PWD/container.zip
 	echo -e $verde"[Sposta tutti i file Scaricati nelle cartelle interessate]"$fine
-	sudo mv $PWD/Immagini/* ~/Immagini
-	sudo mv $PWD/Scaricati/* ~/Scaricati
+	sudo mv $PWD/container/*.jpg ~/Immagini
 	
 	echo " "
 	echo -e $verde"[Update Upgrade]"$fine
@@ -74,12 +75,6 @@ then
 	sudo add-apt-repository ppa:noobslab/themes -y #TEMA2
 	echo -e $verde"[Repository Icone:]"$fine
 	sudo add-apt-repository ppa:noobslab/icons -y #ICONE
-	echo -e $verde"[Repository Java7:]"$fine
-	sudo add-apt-repository ppa:openjdk-r/ppa -y #JAVA7
-	echo -e $verde"[Repository Java11:]"$fine
-	sudo add-apt-repository ppa:linuxuprising/java -y #JAVA11
-	echo -e $verde"[Repository OpenVas:]"$fine
-	sudo add-apt-repository ppa:mrazavi/openvas
 	echo -e $verde"[Update:]"$fine
 	sudo apt-get update > /dev/null
 	sudo apt-get upgrade -y > /dev/null
@@ -93,8 +88,7 @@ then
 	sudo apt-get install macbuntu-os-plank-theme-v1804 -y
 	sudo apt-get install macbuntu-os-icons-v1804 -y
 	sudo apt-get install macbuntu-os-ithemes-v1804 -y
-	wget -O mac-fonts.zip http://drive.noobslab.com/data/Mac/macfonts.zip
-	sudo unzip mac-fonts.zip -d /usr/share/fonts; sudo rm mac-fonts.zip
+	sudo unzip $PWD/container/mac-fonts.zip -d /usr/share/fonts; sudo rm $PWD/container/mac-fonts.zip
 	fc-cache -f -v
 
 	#Tema2:
@@ -110,230 +104,27 @@ then
 	echo " "
 	echo -e $verde"[CONFIGURAZIONE SFONDO LOGIN PAGE]"$fine		
 	sudo rm /usr/share/gnome-shell/theme/ubuntu.css
-	sudo chmod 664 ~/Scaricati/ubuntu.css
-	sudo mv  ~/Scaricati/ubuntu.css /usr/share/gnome-shell/theme/
-	
-	
-	#JAVA(IMPORTANTE PER INSTALLAZIONI SUCCESSIVE):
-	echo " "
-	echo -e $verde"[INSTALLAZIONE JAVA]"$fine
-	sudo apt-get install openjdk-7-jdk
-	sudo apt install default-jre -y
-	sudo apt-get install oracle-java11-installer -y
-
-
-
-	#METASPLOIT(Exploitation)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE METASPLOIT(Exploitation)]"$fine
-	#Installare dipendenze, gemme di ruby e scaricare Metasploit:
-		sudo apt-get update > /dev/null
-		sudo apt-get install build-essential libreadline-dev libssl-dev libpq5 libpq-dev libreadline5 libsqlite3-dev libpcap-dev  subversion git-core autoconf postgresql pgadmin3 curl zlib1g-dev libxml2-dev libxslt1-dev  libyaml-dev ruby ruby-dev nmap xtightvncviewer -y
-		sudo gem install --verbose --debug pcaprub wirble pg sqlite3 msgpack activerecord redcarpet rspec simplecov yard bundler
-		cd /opt
-		sudo git clone https://github.com/rapid7/metasploit-framework.git
-		cd metasploit-framework
-		sudo bash -c 'for MSF in $(ls msf*); do ln -s /opt/metasploit-framework/$MSF /usr/local/bin/$MSF;done'
-		sudo gem update --system
-		bundle install #non eseguire da root
-	#Su Postgres (database):
-		echo -e $verde"Inserire come password: msf"$fine
-		sudo -u postgres createuser msf -P -S -R -D
-		sudo -u postgres createdb -O msf msf
-	#Creare file di configurazione:
-		sudo touch /opt/metasploit-framework/database.yml
-		sudo chmod 666 /opt/metasploit-framework/database.yml
-		#Dentro scrivere:
-		sudo echo "production:" >> /opt/metasploit-framework/database.yml
-		sudo echo "adapter: postgresql" >> /opt/metasploit-framework/database.yml
-		sudo echo "database: msf" >> /opt/metasploit-framework/database.yml
-		sudo echo "username: msf" >> /opt/metasploit-framework/database.yml
-		sudo echo "password: msf" >> /opt/metasploit-framework/database.yml
-		sudo echo "host: 127.0.0.1" >> /opt/metasploit-framework/database.yml
-		sudo echo "port: 5432" >> /opt/metasploit-framework/database.yml
-		sudo echo "pool: 75" >> /opt/metasploit-framework/database.yml
-		sudo echo "timeout: 5" >> /opt/metasploit-framework/database.yml
-	#Creare variabile d'ambiente:
-		sudo sh -c "echo export MSF_DATABASE_CONFIG=/opt/metasploit-framework/database.yml >> ~/.bashrc"
-	#Aviare postgres e msfconsole:
-		sudo service postgresql start
-	#Connettere al database Metasploit:
-		msfconsole < ~/Scaricati/input.txt
-	
-	#DMITRY(Recupero Informazioni)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE DMITRY(Recupero Informazioni)]"$fine
-	sudo apt-get update > /dev/null
-	sudo apt-get upgrade -y > /dev/null
-	sudo apt-get install -y dmitry
-
-	#NETDISCOVER(Recupero Informazioni)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE NETDISCOVER(Recupero Informazioni)]"$fine
-	sudo apt-get install netdiscover -y
-
-	#P0F(Recupero Informazioni)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE P0F(Recupero Informazioni)]"$fine
-	sudo apt-get install p0f -y
-	
-	#GOOGLE CHROME BROWSER
-	echo " "
-	echo -e $verde"[INSTALLAZIONE GOOGLE CHROME BROWSER]"$fine
-	sudo dpkg -i ~/Scaricati/google-chrome-stable_current_amd64.deb
-
-	#LEAFPAD(Editor)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE LEAFPAD(Editor)]"$fine
-	sudo apt-get install leafpad
-	
-	#JOHN THE RIPPER(Attacchi alle password)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE JOHN THE RIPPER(Attacchi alle password)]"$fine
-	sudo apt-get install john -y
-
-	#CEWL(Attacchi alle password)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE CEWL(Attacchi alle password)]"$fine
-	sudo apt-get install cewl -y
-	
-	#NIKTO(Analisi Vulnerabilita')
-	echo " "
-	echo -e $verde"[INSTALLAZIONE NIKTO(Analisi Vulnerabilita')]"$fine
-	sudo apt-get install nikto -y
-	sudo nikto -update
-	
-	#OPENVAS(Analisi Vulnerabilita')
-	echo " "
-	echo -e $verde"[INSTALLAZIONE OPENVAS(Analisi Vulnerabilita')]"$fine
-	sudo apt install sqlite3
-	sudo apt install openvas9 -y
-	sudo apt install texlive-latex-extra --no-install-recommends -y
-	sudo apt install texlive-fonts-recommended -y
-	sudo apt install libopenvas9-dev -y
-	sudo greenbone-nvt-sync
-	sudo greenbone-scapdata-sync
-	sudo greenbone-certdata-sync
-	sudo systemctl restart openvas-scanner
-	sudo systemctl restart openvas-manager
-	sudo systemctl restart openvas-gsa
-	sudo systemctl enable openvas-scanner
-	sudo systemctl enable openvas-manager
-	sudo systemctl enable openvas-gsa
-	sudo openvasmd --rebuild --progress
-	echo -e $verde"Per accedere https://127.0.0.1:4000, con admin - admin"$fine
-	
-	#AIRCRACK-NG(Attacchi wireless)
-	sudo apt-get install aircrack-ng
-
-	#WIFITE(Attacchi wireless)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE WIFITE(Attacchi wireless)]"$fine
-	sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
-	sudo apt-get update  > /dev/null 
-	sudo apt-get upgrade -y  > /dev/null
-	sudo apt-get install wifite -y
-	
-	#MACCHANGER(sniffing)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE MACCHANGER(sniffing)]"$fine
-	sudo apt-get install macchanger -y
-
-	#DRIFTNET(sniffing)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE DRIFTNET(sniffing)]"$fine
-	sudo apt-get install driftnet -y
+	sudo chmod 664 ~/container/ubuntu.css
+	sudo mv  $PWD/container/ubuntu.css /usr/share/gnome-shell/theme/
 
 	#WIRESHARK(sniffing)
 	echo " "
 	echo -e $verde"[INSTALLAZIONE WIRESHARK(sniffing)]"$fine
 	sudo apt-get install mimtproxy -y
 	sudo apt install wireshark-qt -y
-
-	#VERACRYPT(criptare disco)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE VERACRYPT(criptare disco)]"$fine
-	sudo add-apt-repository ppa:unit193/encryption -y
-	sudo apt-get update  > /dev/null
-	sudo apt install veracrypt -y
-
-	#MAT(exif data)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE MAT(exif data)]"$fine
-	sudo apt-get install mat -y
-
-	#BLEACHBIT(Come CCleaner)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE BLEACHBIT(Come CCleaner)]"$fine
-	sudo apt install bleachbit -y
-
-	#SECURE DELETED (SHRED)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE SECURE DELETED (SHRED)]"$fine
-	sudo apt-get install secure-delete -y
 	
-	#MALTEGO(Recupero Informazioni)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE MALTEGO(Recupero Informazioni)]"$fine
-	sudo apt-get install openjdk-8-jdk -y
-	sudo dpkg -i ~/Scaricati/Maltego.v4.2.3.12223.deb
-
-	#BURPSUITE(Applicazioni web)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE BURPSUITE(Applicazioni web)]"$fine
-	sudo bash ~/Scaricati/burpsuite_community_linux_v1_7_36.sh	
-
-	#CRUNCH(Attacchi alle password)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE CRUNCH(Attacchi alle password)]"$fine
-	sudo tar -zxvf ~/Scaricati/crunch-3.6.tgz -C /opt/
-	cd /opt/crunch-3.6
-	sudo make
-	sudo make install	
-
-	#BEEF-XXS(Exploitation)
-	echo " "
-	echo -e $verde"[INSTALLAZIONE BEEF-XXS(Exploitation)]"$fine
-	sudo apt install ruby ruby-dev
-	sudo apt install git
-	cd /opt/
-	sudo git clone https://github.com/beefproject/beef
-	cd /opt/beef
-	sudo bundle install
-	sudo ./install
-	sudo ./update-geoipdb
-	sudo ./update-beef
-	sudo rm /opt/beef/config.yaml
-	sudo mv ~/Scaricati/config.yaml /opt/beef/
+	#THUNDERBIRD(posta)
+	sudo apt install thunderbird
 	
-	#VEIL
-	echo " "
-	echo -e $verde"[INSTALLAZIONE VEIL]"$fine
-	cd /opt/
-	sudo git clone https://github.com/Veil-Framework/Veil.git
-	cd /opt/Veil
-	sudo ./config/setup.sh --force --silent
-
-
-	#SHELTER
-	echo " "
-	echo -e $verde"[INSTALLAZIONE SHELTER]"$fine
-	sudo unzip ~/Scaricati/shellter.zip -d /opt/
-
-	#TOR BROWSER
-	echo " "
-	echo -e $verde"[INSTALLAZIONE TOR BROWSER]"$fine
-	sudo touch /etc/apt/sources.list.d/tor.list
-	sudo chmod 664 /etc/apt/sources.list.d/tor.list
-	sudo echo "deb https://deb.torproject.org/torproject.org bionic main" >> /etc/apt/sources.list.d/tor.list
-	sudo echo "deb-src https://deb.torproject.org/torproject.org bionic main" >> /etc/apt/sources.list.d/tor.list
-	sudo curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | sudo gpg --import 
-	sudo gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
-	sudo apt-get update
-	sudo apt-get upgrade -y
-	sudo apt install tor -y
-
-		
+	#PYCHARM
+	sudo apt install -y python3-pip -y
+	sudo snap install pycharm-community --classic -y
+	
+	#KEEPASS2
+	sudo apt install keepass2 -y
+	
+	#VIRTUALBOX
+	sudo apt install virtualbox -y
 
 
 	echo " "
@@ -346,44 +137,11 @@ then
 	echo "3. Per lo sfondo selezionare una delle immagini contenute nella cartella Immagini facendo click con tasto destro sul Desktop e selezionando \"Cambia Sfondo\""
 	echo " "
 	echo -e "\e[5m\e[31m[ATTENZIONE!!!]\e[0m"
-	echo "Per Metasploit nel caso durante la ricerca di un modulo si presentasse il messaggio [!] Module database cache not built yet, using slow search, possiamo correggere l’errore e beneficiare della ricerca veloce eseguendo i seguenti passaggi:"
-	echo "msfconsole
-	#	db_rebuild_cache
-	#	quit
-	#	service postgresql restart
-	#	msfconsole"
-	echo " "
-	echo -e "\e[5m\e[31m[ATTENZIONE!!!]\e[0m"
 	echo "Per applicare il tema alla Dock di Plank (Il menù in stile MacOS che esce sul fondo del Desktop), fare click sul menù con 'CTRL + tasto destro del mouse' e selezionare Preferenze -> Aspetto -> 'Tema' e selezionare MB-X-Dark; dopodichè sempre in Aspetto andare su 'Dimensioni icone' e settare a 55 il valore; in fine, attivare l''Ingrandimento icone' e settarlo a 170."
 	echo "Per aggiungere i programmi alla Dock Plank, aprire il programma interessato e cliccare con il tasto destro sull'icona del programma nel Menù Plank; spuntare 'Mantieni sulla Dock'"
 	
 	#Apre il tool per modificare il tema
 	unity-tweak-tool
-
-	#ALTRO:
-	#Cambio MAC address
-	#sudo macchanger -r interface
-	#service network-manager restart
-	
-	#Cambio DNS (OpenDNS)
-	#sudo nano /etc/resolv.conf
-	#aggiungere gli ip di openDNS: 208.67.222.222, 208.67.220.220
-	#service network-manager restart
-	
-	#Pulire cache DNS
-	sudo apt-get install nscd -y
-	#/etc/init.d/nscd restart
-	
-	#VPN
-	#sito dove consultare tutte le vpn non gratuite con possibilità di pagamento in bitcoin e con politica NO LOG:www.vpndienste.net
-	#Consigliate: NordVpn, BTGuard, Mullvad, PRQ, Private Internet Access, ShadeYou, OctaneVpn, SlickVPN, Securevpn.to
-	sudo apt-get install openvpn
-	cd /etc/openvpn
-	#In questo caso si è effettuato un abbonamento a NordVpn e quindi si farà:
-	sudo wget https://nordvpn.com/api/files/zip
-	sudo unzip zip
-	#Per collegarsi ad una Vpn eseguire il comando: openvpn uno_dei_server e inserire nome utente e password
-	#Per testare eseguire il comando: wget http://ipinfo.io/ip -qO -
 
 	echo " "
 	echo -e $verde$gras"Configurazione effettuata con Successo!"$fine
