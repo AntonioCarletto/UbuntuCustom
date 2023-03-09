@@ -64,48 +64,17 @@ then
 	sudo chmod -R 700 ~/.config/autostart
 	sudo chmod 664 ~/.config/autostart/plank.desktop
 
-
-
-
-	#AGGIUNGI REPOSITORY
-	echo -e $verde"[AGGIUNGI REPOSITORY]"$fine
-	echo -e $verde"[Repository Tema1:]"$fine
-	sudo add-apt-repository ppa:noobslab/macbuntu -y #TEMA1
-	echo -e $verde"[Repository Tema2:]"$fine
-	sudo add-apt-repository ppa:noobslab/themes -y #TEMA2
-	echo -e $verde"[Repository Icone:]"$fine
-	sudo add-apt-repository ppa:noobslab/icons -y #ICONE
-	echo -e $verde"[Update:]"$fine
-	sudo apt-get update > /dev/null
-	sudo apt-get upgrade -y > /dev/null
-
-
 	#TEMA
 	echo " "
 	echo -e $verde"[INSTALLAZIONE TEMI E ICONE]"$fine
+	sudo $PWD/container/install.sh
 
-	#Tema1
-	sudo apt-get install macbuntu-os-plank-theme-v1804 -y
-	sudo apt-get install macbuntu-os-icons-v1804 -y
-	sudo apt-get install macbuntu-os-ithemes-v1804 -y
+	#ICONE
 	sudo unzip $PWD/container/mac-fonts.zip -d /usr/share/fonts; sudo rm $PWD/container/mac-fonts.zip
 	fc-cache -f -v
 
-	#Tema2:
-	sudo apt-get install stylish-themes -y
-
-
-	#Icone:
-	sudo apt-get install shadow-icon-theme
-	sudo apt-get install obsidian-1-icons
-	
-
-	#Sfondo Login
-	echo " "
-	echo -e $verde"[CONFIGURAZIONE SFONDO LOGIN PAGE]"$fine		
-	sudo rm /usr/share/gnome-shell/theme/ubuntu.css
-	sudo chmod 664 ~/container/ubuntu.css
-	sudo mv  $PWD/container/ubuntu.css /usr/share/gnome-shell/theme/
+	#TEMA:
+	sudo apt-get install stylish-themes -y	
 
 	#WIRESHARK(sniffing)
 	echo " "
