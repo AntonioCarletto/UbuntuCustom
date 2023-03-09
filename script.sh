@@ -43,9 +43,9 @@ then
 
 	#UNITY TWEAK TOOL:
 	echo " "
-	echo -e $verde"[INSTALLAZIONE UNITY TWEAK TOOL E DIPENDENZE]"$fine
-	sudo apt-get install notify-osd -y
-	sudo apt-get install unity-tweak-tool -y
+	echo -e $verde"[INSTALLAZIONE GNOME TWEAKS E DIPENDENZE]"$fine
+	sudo apt install gnome-tweaks
+	sudo apt install gnome-shell-extension-manager
 
 
 	#PLANK
