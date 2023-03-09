@@ -67,14 +67,15 @@ then
 	#TEMA
 	echo " "
 	echo -e $verde"[INSTALLAZIONE TEMI E ICONE]"$fine
-	sudo $PWD/container/install.sh
+	sudo $PWD/container/WhiteSur-gtk-theme-master/install.sh
 
 	#ICONE
 	sudo unzip $PWD/container/mac-fonts.zip -d /usr/share/fonts; sudo rm $PWD/container/mac-fonts.zip
 	fc-cache -f -v
 
-	#TEMA:
-	sudo apt-get install stylish-themes -y	
+	#LOGIN:
+	wget -qO - https://github.com/PRATAP-KUMAR/ubuntu-gdm-set-background/archive/main.tar.gz | tar zx --strip-components=1 ubuntu-gdm-set-background-main/ubuntu-gdm-set-background
+	sudo ./ubuntu-gdm-set-background --image /home/slevin/Immagini/login.jpg 
 
 	#WIRESHARK(sniffing)
 	echo " "
