@@ -31,8 +31,9 @@ then
 	
 	#Unzip e Sposta tutti i file di container.zip nelle apposite cartelle
 	echo " "
-	echo -e $verde"[Unzip conteiner.zip]"$fine
+	echo -e $verde"[Unzip container.zip]"$fine
 	sudo unzip $PWD/container.zip
+	echo " "
 	echo -e $verde"[Sposta tutti i file Scaricati nelle cartelle interessate]"$fine
 	sudo mv $PWD/container/*.jpg ~/Immagini
 	
@@ -74,6 +75,8 @@ then
 	fc-cache -f -v
 
 	#LOGIN:
+	echo " "
+	echo -e $verde"[INSTALLAZIONE E CONFIGURAZIONE PAGINA DI LOGIN"$fine
 	wget -qO - https://github.com/PRATAP-KUMAR/ubuntu-gdm-set-background/archive/main.tar.gz | tar zx --strip-components=1 ubuntu-gdm-set-background-main/ubuntu-gdm-set-background
 	sudo ./ubuntu-gdm-set-background --image /home/slevin/Immagini/login.jpg 
 
@@ -84,16 +87,24 @@ then
 	sudo apt install wireshark-qt -y
 	
 	#THUNDERBIRD(posta)
+	echo " "
+	echo -e $verde"[INSTALLAZIONE THUNDERBIRD]"$fine
 	sudo apt install thunderbird
 	
 	#PYCHARM
+	echo " "
+	echo -e $verde"[INSTALLAZIONE PYCHARM COMMUNITY]"$fine
 	sudo apt install -y python3-pip -y
 	sudo snap install pycharm-community --classic -y
 	
 	#KEEPASS2
+	echo " "
+	echo -e $verde"[INSTALLAZIONE KEEPASS2]"$fine
 	sudo apt install keepass2 -y
 	
 	#VIRTUALBOX
+	echo " "
+	echo -e $verde"[INSTALLAZIONE VIRTUALBOX]"$fine
 	sudo apt install virtualbox -y
 
 
