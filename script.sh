@@ -42,7 +42,7 @@ then
 	sudo apt-get update > /dev/null
 	sudo apt-get upgrade -y > /dev/null
 
-	#UNITY TWEAK TOOL:
+	#GNOME TWEAK:
 	echo " "
 	echo -e $verde"[INSTALLAZIONE GNOME TWEAKS E DIPENDENZE]"$fine
 	sudo apt install gnome-tweaks
@@ -113,16 +113,16 @@ then
 	echo -e "\e[92mConfigurazione effettuato con successo!\e[0m"
 	echo " "
 	echo -e "\e[5m\e[31m[ATTENZIONE!!!]\e[0m"
-	echo -e "1. Prima di iniziare ad utilizzare Ubuntu andare in \e[1mUnity Tweak Tools \e[21m(si aprirà automaticamente alla fine dello script) e selezionare in Tema: \e[1mMacbuntu-sierra-dark \e[21m, Icone: \e[1mobsidian \e[21m, Puntatore: \e[1mDmz-black \e[21mTipi di carattere: \e[1mUbuntu Mono Regular 13\e[0m"
+	echo -e "1. Prima di iniziare ad utilizzare Ubuntu andare in \e[1mGnome Tweak \e[21m(si aprirà automaticamente alla fine dello script) e selezionare in Aspetto: \e[1mApplicazioni -> WhiteSur-Dark \e[21m, Icone: \e[1mUbuntu-mono-dark\e[21m,poi cambiare gli sfondi manualmente.\e[0m"
 	echo -e "2. Inoltre, nelle impostazioni di Ubuntu andare in \e[1mimpostazioni->Dock->attivare \"Nascondi automaticamente la Dock\"\e[0m"
 	echo "3. Per lo sfondo selezionare una delle immagini contenute nella cartella Immagini facendo click con tasto destro sul Desktop e selezionando \"Cambia Sfondo\""
 	echo " "
 	echo -e "\e[5m\e[31m[ATTENZIONE!!!]\e[0m"
-	echo "Per applicare il tema alla Dock di Plank (Il menù in stile MacOS che esce sul fondo del Desktop), fare click sul menù con 'CTRL + tasto destro del mouse' e selezionare Preferenze -> Aspetto -> 'Tema' e selezionare MB-X-Dark; dopodichè sempre in Aspetto andare su 'Dimensioni icone' e settare a 55 il valore; in fine, attivare l''Ingrandimento icone' e settarlo a 170."
+	echo "Per applicare il tema alla Dock di Plank, fare click sul menù con 'CTRL + tasto destro del mouse' e selezionare Preferenze -> Aspetto -> 'Tema' e selezionare MB-X-Dark; dopodichè sempre in Aspetto andare su 'Dimensioni icone' e settare a 55 il valore; in fine, attivare l''Ingrandimento icone' e settarlo a 170."
 	echo "Per aggiungere i programmi alla Dock Plank, aprire il programma interessato e cliccare con il tasto destro sull'icona del programma nel Menù Plank; spuntare 'Mantieni sulla Dock'"
 	
 	#Apre il tool per modificare il tema
-	unity-tweak-tool
+	gnome-tweaks
 
 	echo " "
 	echo -e $verde$gras"Configurazione effettuata con Successo!"$fine
