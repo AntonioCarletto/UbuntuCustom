@@ -43,10 +43,10 @@ then
 	sudo apt-get upgrade -y > /dev/null
 
 	#GNOME TWEAK:
-	echo " "
-	echo -e $verde"[INSTALLAZIONE GNOME TWEAKS E DIPENDENZE]"$fine
-	sudo apt install gnome-tweaks
-	sudo apt install gnome-shell-extension-manager
+	#echo " "
+	#echo -e $verde"[INSTALLAZIONE GNOME TWEAKS E DIPENDENZE]"$fine
+	#sudo apt install gnome-tweaks
+	#sudo apt install gnome-shell-extension-manager
 
 
 	#PLANK
@@ -89,7 +89,7 @@ then
 	#THUNDERBIRD(posta)
 	echo " "
 	echo -e $verde"[INSTALLAZIONE THUNDERBIRD]"$fine
-	sudo apt install thunderbird
+	sudo apt install thunderbird -y
 	
 	#PYCHARM
 	echo " "
@@ -122,7 +122,7 @@ then
 	echo "Per aggiungere i programmi alla Dock Plank, aprire il programma interessato e cliccare con il tasto destro sull'icona del programma nel Menù Plank; spuntare 'Mantieni sulla Dock'"
 	
 	#Apre il tool per modificare il tema
-	gnome-tweaks
+	#gnome-tweaks
 
 	echo " "
 	echo -e $verde$gras"Configurazione effettuata con Successo!"$fine
