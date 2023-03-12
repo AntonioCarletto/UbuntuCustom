@@ -103,6 +103,9 @@ then
 	echo " "
 	echo -e $verde"[INSTALLAZIONE VIRTUALBOX]"$fine
 	sudo apt install virtualbox -y
+	
+	#VLC
+	sudo apt install vlc -y
 
 
 	echo " "
