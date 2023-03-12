@@ -92,7 +92,7 @@ then
 	echo " "
 	echo -e $verde"[INSTALLAZIONE PYCHARM COMMUNITY]"$fine
 	sudo apt install -y python3-pip -y
-	sudo snap install pycharm-community --classic -y
+	sudo snap install pycharm-community --classic
 	
 	#KEEPASS2
 	echo " "
