@@ -126,7 +126,7 @@ then
 	echo "Per aggiungere i programmi alla Dock Plank, aprire il programma interessato e cliccare con il tasto destro sull'icona del programma nel Menù Plank; spuntare 'Mantieni sulla Dock'"
 	
 	#Apre il tool per modificare il tema
-	#gnome-tweaks
+	gnome-tweaks
 
 	echo " "
 	echo -e $verde$gras"Configurazione effettuata con Successo!"$fine
