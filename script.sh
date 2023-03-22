@@ -106,6 +106,10 @@ then
 	
 	#VLC
 	sudo apt install vlc -y
+	
+	#TOR
+	sudo apt install tor
+	echo ". torsocks on" >> ~/.bashrc
 
 
 	echo " "
