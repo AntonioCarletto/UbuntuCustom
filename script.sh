@@ -109,40 +109,16 @@ then
 	echo -e $verde"[INSTALLAZIONE VLC]"$fine
 	sudo apt install vlc -y
 	
-	#TOR
+	#TOR 
 	echo " "
 	echo -e $verde"[INSTALLAZIONE TOR E CONFIGURAZIONE SHELL]"$fine
 	sudo apt install tor
 	echo ". torsocks on" >> ~/.bashrc
 	
-	#MACCHINE VIRTUALI INTERNET ATTRAVERSO TOR
+	#STACER
 	echo " "
-	echo -e $verde"[CONFIGURAZIONE PER FAR PASSARE LE MACCHINE VIRTUALI DALLA RETE TOR]"$fine
-	sudo apt-get install bridge-utils
-	sudo apt install ifupdown
-	sudo apt install net-tools
-
-	sudo touch /etc/network/interfaces
-	sudo chmod 777 /etc/network/interfaces
-	echo "# Ponte VirtualBox NAT" >> /etc/network/interfaces
-	echo "auto vnet0" >> /etc/network/interfaces
-	echo "iface vnet0 inet static" >> /etc/network/interfaces
-	echo " address 172.16.0.1" >> /etc/network/interfaces
-	echo " netmask 255.255.255.0" >> /etc/network/interfaces
-	echo " bridge_ports none" >> /etc/network/interfaces
-	echo " bridge_maxwait 0" >> /etc/network/interfaces
-	echo " bridge_fd 1" >> /etc/network/interfaces
-	echo "        " >> /etc/network/interfaces
-	echo " up iptables -t nat -I POSTROUTING -s 172.16.0.0/24 -j MASQUERADE" >> /etc/network/interfaces
-	echo " down iptables -t nat -D POSTROUTING -s 172.16.0.0/24 -j MASQUERADE" >> /etc/network/interfaces
-	sudo ifup vnet0
-	
-	
-	
-	
-	
-	
-	
+	echo -e $verde"[INSTALLAZIONE STACER (Strumento di pulizia)]"$fine
+	sudo sudo apt install stacer -y	
 	
 	echo " "
 	echo " "
