@@ -108,6 +108,12 @@ then
 	echo " "
 	echo -e $verde"[INSTALLAZIONE VLC]"$fine
 	sudo apt install vlc -y
+
+ 	#TOR BROWSER
+  	echo " " 
+   	echo -e $verde"[INSTALLAZIONE TOR BROWSER]"$fine
+    	tar -xvf $PWD/container/tor-browser-linux64-12.5.1_ALL.tar.xz
+     	$PWD/container/tor-browser/start-tor-browser.desktop --register-app
 	
 	#TOR 
 	echo " "
@@ -138,7 +144,7 @@ then
 
 	echo " "
 	echo -e $verde$gras"Configurazione effettuata con Successo!"$fine
-
+ 	
 else
 	echo " "
 	echo " "
